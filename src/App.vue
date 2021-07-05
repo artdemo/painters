@@ -1,28 +1,34 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <h1>Header</h1>
+    <Card
+      v-for="painting in paintings"
+      v-bind:card="painting"
+      :key="painting.id"
+    />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue';
+import Card from './components/Card.vue';
+import data from './assets/data.json';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld,
+    Card,
+  },
+  data() {
+    return {
+      paintings: data.paintings,
+    };
   },
 };
 </script>
 
-<style lang="scss">
+<style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  border: 2px dashed blue;
+  width: 1140px;
 }
 </style>
